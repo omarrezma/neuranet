@@ -1,0 +1,28 @@
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+sqlalchemy>=2.0.0
+python-dotenv>=1.0.1
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+# passlib 1.7.4 reads bcrypt's internal __about__.__version__ attribute,
+# which was removed in bcrypt>=4.1 — this makes passlib misdetect the
+# backend and every hash/verify call raises "password cannot be longer
+# than 72 bytes" even for short passwords. Pin below that until passlib
+# ships a fix.
+bcrypt<4.1
+pydantic[email]>=2.7.0
+psutil>=5.9.8
+pandas>=2.2.0
+numpy>=1.26.0
+joblib>=1.4.0
+scikit-learn>=1.4.0
+scapy>=2.5.0
+tensorflow>=2.16.0
+jinja2>=3.1.4
+python-multipart>=0.0.9
+slowapi>=0.1.9
+
+# --- Testing (dev) ---
+pytest>=8.3.0
+pytest-asyncio>=0.24.0
+httpx>=0.27.0

@@ -1,0 +1,61 @@
+# Label definitions for this repository.
+#
+# Apply them with the GitHub CLI (run once, after creating the repo on GitHub):
+#
+#   gh label create "bug" --color d73a4a --description "Something isn't working" --force
+#   ... (or use a labeler action / script that reads this file)
+#
+# Kept as plain data here so labels are versioned and reviewable like any
+# other config, rather than only living in the GitHub UI.
+
+- name: bug
+  color: "d73a4a"
+  description: "Something isn't working"
+
+- name: enhancement
+  color: "a2eeef"
+  description: "New feature or request"
+
+- name: documentation
+  color: "0075ca"
+  description: "Improvements or additions to documentation"
+
+- name: security
+  color: "b60205"
+  description: "Security-relevant issue or hardening"
+
+- name: backend
+  color: "1d76db"
+  description: "FastAPI backend (neuranet-backend)"
+
+- name: frontend
+  color: "5319e7"
+  description: "React frontend (neuranet-frontend)"
+
+- name: ai-ml
+  color: "0e8a16"
+  description: "Model training, inference, or feature engineering"
+
+- name: collector
+  color: "fbca04"
+  description: "Packet capture / flow tracking pipeline"
+
+- name: ci
+  color: "c5def5"
+  description: "GitHub Actions / build pipeline"
+
+- name: dependencies
+  color: "0366d6"
+  description: "Dependency updates (Dependabot)"
+
+- name: good first issue
+  color: "7057ff"
+  description: "Good for newcomers"
+
+- name: help wanted
+  color: "008672"
+  description: "Extra attention is needed"
+
+- name: wontfix
+  color: "ffffff"
+  description: "This will not be worked on"

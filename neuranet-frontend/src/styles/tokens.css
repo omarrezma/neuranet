@@ -1,0 +1,95 @@
+/**
+ * NeuraNet Design Tokens
+ * -----------------------------------------------------------------------
+ * Enterprise SOC dark theme. Every color, radius, and shadow used across
+ * the app should be pulled from here — never hardcode a hex value in a
+ * component. This is what keeps 60+ files looking like one product.
+ *
+ * Palette reasoning:
+ *  - Base is a near-black navy (not pure black) so glass surfaces have
+ *    something to separate from.
+ *  - One signal color family (blue) carries the brand + "everything is
+ *    fine" state, per the SOC-vendor reference set (Defender/Cortex/QRadar).
+ *  - Threat severities use a fixed 4-step ramp (info/low/med/high->critical)
+ *    reused identically in badges, charts, and the topology graphic so a
+ *    color always means the same thing everywhere in the product.
+ */
+
+:root {
+  /* ---------- Base surfaces ---------- */
+  --nn-bg-0: #060911;           /* app canvas */
+  --nn-bg-1: #0a0f1c;           /* sidebar / topbar base */
+  --nn-bg-2: #0e1526;           /* raised panel base (pre-blur) */
+  --nn-surface-glass: rgba(15, 21, 38, 0.66);
+  --nn-surface-glass-strong: rgba(13, 18, 32, 0.86);
+  --nn-surface-hover: rgba(255, 255, 255, 0.035);
+
+  --nn-border: rgba(148, 163, 184, 0.12);
+  --nn-border-strong: rgba(148, 163, 184, 0.22);
+  --nn-border-glow: rgba(59, 130, 246, 0.35);
+
+  /* ---------- Text ---------- */
+  --nn-text-primary: #e7ecf5;
+  --nn-text-secondary: #92a0b8;
+  --nn-text-tertiary: #5c6b85;
+  --nn-text-inverse: #061019;
+
+  /* ---------- Brand / signal ---------- */
+  --nn-signal-500: #3b82f6;
+  --nn-signal-400: #5b9bff;
+  --nn-signal-600: #2563eb;
+  --nn-signal-glow: rgba(59, 130, 246, 0.45);
+
+  --nn-cyan-500: #22d3ee;      /* AI / telemetry accent, distinct from brand blue */
+  --nn-violet-500: #8b7cf6;    /* prediction / reasoning accent */
+
+  /* ---------- Severity ramp (fixed meaning everywhere) ---------- */
+  --nn-sev-info: #3b82f6;
+  --nn-sev-low: #10b981;
+  --nn-sev-medium: #f59e0b;
+  --nn-sev-high: #f97316;
+  --nn-sev-critical: #ef4444;
+
+  /* ---------- Radius ---------- */
+  --nn-radius-sm: 10px;
+  --nn-radius-md: 16px;
+  --nn-radius-lg: 20px;
+  --nn-radius-xl: 28px;
+  --nn-radius-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --nn-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --nn-shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --nn-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.45);
+  --nn-shadow-glow-blue: 0 0 0 1px rgba(59, 130, 246, 0.18), 0 8px 32px rgba(59, 130, 246, 0.12);
+
+  --nn-blur-panel: 18px;
+  --nn-blur-heavy: 28px;
+
+  /* ---------- Type ---------- */
+  --nn-font-ui: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --nn-font-data: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --nn-fs-xs: 11px;
+  --nn-fs-sm: 12.5px;
+  --nn-fs-md: 14px;
+  --nn-fs-lg: 16px;
+  --nn-fs-xl: 20px;
+  --nn-fs-2xl: 26px;
+  --nn-fs-3xl: 34px;
+
+  /* ---------- Motion ---------- */
+  --nn-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --nn-dur-fast: 150ms;
+  --nn-dur-med: 300ms;
+  --nn-dur-slow: 600ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

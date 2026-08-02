@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import './tokens.css';
+
+html, body, #root {
+  height: 100%;
+  background: var(--nn-bg-0);
+}
+
+body {
+  font-family: var(--nn-font-ui);
+  color: var(--nn-text-primary);
+  background: var(--nn-bg-0);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(59, 130, 246, 0.10), transparent 45%),
+    radial-gradient(circle at 100% 30%, rgba(139, 124, 246, 0.07), transparent 40%);
+  background-attachment: fixed;
+}
+
+/* Visible keyboard focus everywhere — never remove outline without replacing it */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--nn-signal-400);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.18);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.3); background-clip: content-box; }
+
+/* ---------- Glass surface primitives ---------- */
+.nn-glass {
+  background: var(--nn-surface-glass);
+  backdrop-filter: blur(var(--nn-blur-panel));
+  -webkit-backdrop-filter: blur(var(--nn-blur-panel));
+  border: 1px solid var(--nn-border);
+  border-radius: var(--nn-radius-lg);
+  box-shadow: var(--nn-shadow-md);
+}
+
+.nn-glass-strong {
+  background: var(--nn-surface-glass-strong);
+  backdrop-filter: blur(var(--nn-blur-heavy));
+  -webkit-backdrop-filter: blur(var(--nn-blur-heavy));
+  border: 1px solid var(--nn-border-strong);
+  border-radius: var(--nn-radius-lg);
+  box-shadow: var(--nn-shadow-lg);
+}
+
+.nn-glass-hover {
+  transition: border-color var(--nn-dur-med) var(--nn-ease),
+              box-shadow var(--nn-dur-med) var(--nn-ease),
+              transform var(--nn-dur-med) var(--nn-ease);
+}
+.nn-glass-hover:hover {
+  border-color: var(--nn-border-glow);
+  box-shadow: var(--nn-shadow-glow-blue);
+  transform: translateY(-2px);
+}
+
+.nn-mono {
+  font-family: var(--nn-font-data);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+}
+
+.nn-text-secondary { color: var(--nn-text-secondary); }
+.nn-text-tertiary { color: var(--nn-text-tertiary); }
+
+.nn-eyebrow {
+  font-size: var(--nn-fs-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--nn-text-tertiary);
+  font-weight: 600;
+}
+
+/* ---------- Severity badge dots (reused in tables, cards, nav) ---------- */
+.nn-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; flex-shrink: 0; }
+.nn-dot-info { background: var(--nn-sev-info); box-shadow: 0 0 8px var(--nn-sev-info); }
+.nn-dot-low { background: var(--nn-sev-low); box-shadow: 0 0 8px var(--nn-sev-low); }
+.nn-dot-medium { background: var(--nn-sev-medium); box-shadow: 0 0 8px var(--nn-sev-medium); }
+.nn-dot-high { background: var(--nn-sev-high); box-shadow: 0 0 8px var(--nn-sev-high); }
+.nn-dot-critical { background: var(--nn-sev-critical); box-shadow: 0 0 8px var(--nn-sev-critical); animation: nn-pulse 1.8s ease-in-out infinite; }
+
+@keyframes nn-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.85); }
+}
+
+@keyframes nn-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.nn-animate-in { animation: nn-fade-up var(--nn-dur-med) var(--nn-ease) both; }
+
+/* ---------- Skeleton loading ---------- */
+.nn-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgba(148, 163, 184, 0.08);
+  border-radius: var(--nn-radius-sm);
+}
+.nn-skeleton::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.10), transparent);
+  transform: translateX(-100%);
+  animation: nn-shimmer 1.6s var(--nn-ease) infinite;
+}
+@keyframes nn-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ---------- Auth pages (login/register) ---------- */
+@media (max-width: 760px) {
+  .nn-auth-split { grid-template-columns: 1fr !important; }
+  .nn-auth-split > div:last-child { display: none; }
+  .nn-auth-form { padding: 32px 24px !important; }
+}
